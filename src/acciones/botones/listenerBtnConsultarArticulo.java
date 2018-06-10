@@ -21,9 +21,9 @@ public class listenerBtnConsultarArticulo implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		ConsultaArticulo panel = this.paraUI.getPanelConsultarArticulo();
 		String clave = panel.getComboArticulos().getSelectedItem().toString();
-		System.out.println("Clave: " + clave);
 		Articulo articulo = this.paraUI.getLogica().consularArticulo(clave);
-		System.out.println(articulo);
+		panel.getTxtDescripcion().setText(articulo.getDescripcion());
+		panel.getTxtPrecioActual().setText(String.valueOf(articulo.getCurrentPrice()));
 	}
 
 }
