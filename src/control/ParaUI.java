@@ -154,7 +154,7 @@ public class ParaUI extends UI {
 		if (indice != null) {
 			Set clave = indice.keySet();
 			for (Object object : clave) {
-				comboArticulos.addItem(object);
+				comboArticulos.addItem(object.toString());
 			}
 		} else {
 			System.err.println(">Combo artoculo nulo.");

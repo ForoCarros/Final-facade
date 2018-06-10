@@ -38,10 +38,8 @@ public class listenerBtnAnadirLineaPedido implements ActionListener {
 			this.paraUI.setPedidoTemporal(new Pedido(5, cliente));
 		}
 		pedido = this.paraUI.getPedidoTemporal();
-		String clave = panel.getComboArticulos().getSelectedItem().toString();
-		// Articulo articulo = (Articulo)
-		// this.paraUI.getLogica().obtenerArticulo(clave);
-		Articulo articulo = new Articulo(999, "test", "test", 1);
+		String clave = (String) panel.getComboArticulos().getSelectedItem();
+		Articulo articulo = this.paraUI.getLogica().obtenerArticulo(clave);
 		System.out.println(articulo);
 		Linea linea = new Linea(articulo, Integer.valueOf(panel.getTxtCantidad().getText()));
 		pedido.insertarLinea(linea);
