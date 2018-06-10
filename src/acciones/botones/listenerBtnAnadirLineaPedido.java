@@ -23,7 +23,6 @@ public class listenerBtnAnadirLineaPedido implements ActionListener {
 	public listenerBtnAnadirLineaPedido(ParaUI paraUI) {
 		super();
 		this.paraUI = paraUI;
-		//
 	}
 
 	@Override
@@ -32,13 +31,17 @@ public class listenerBtnAnadirLineaPedido implements ActionListener {
 		assert panel.getComboClientes() != null : "Cliente nulo";
 		assert panel.getComboArticulos() != null : "Artículo nulo";
 		assert !panel.getTxtCantidad().getText().isEmpty() : "Cantidad igual o inferior a 0";
-		if (this.paraUI.getPedidoTemporal() == null) {
-			String clave = panel.getComboArticulos().getSelectedItem().toString();
-			Cliente cliente = this.paraUI.getLogica().obtenerCliente(clave);
-		}
 		Pedido pedido = this.paraUI.getPedidoTemporal();
+		if (pedido == null) {
+			String clave = panel.getComboClientes().getSelectedItem().toString();
+			Cliente cliente = this.paraUI.getLogica().obtenerCliente(clave);
+			this.paraUI.setPedidoTemporal(new Pedido(5, cliente));
+		}
+		pedido = this.paraUI.getPedidoTemporal();
 		String clave = panel.getComboArticulos().getSelectedItem().toString();
-		Articulo articulo = (Articulo) this.paraUI.getLogica().obtenerArticulo(clave);
+		// Articulo articulo = (Articulo)
+		// this.paraUI.getLogica().obtenerArticulo(clave);
+		Articulo articulo = new Articulo(999, "test", "test", 1);
 		System.out.println(articulo);
 		Linea linea = new Linea(articulo, Integer.valueOf(panel.getTxtCantidad().getText()));
 		pedido.insertarLinea(linea);
