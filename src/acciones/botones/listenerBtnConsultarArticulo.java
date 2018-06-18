@@ -15,13 +15,11 @@ public class listenerBtnConsultarArticulo implements ActionListener {
 		this.paraUI = paraUI;
 	}
 
-	// ESTÁ HECHO EN BASE A QUE EL .getSelectedItem() DEL COMBOBOX RETORNA UN
-	// STRING, OSEA QUE LO MISMO HAY QUE CAMBIARLO
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		ConsultaArticulo panel = this.paraUI.getPanelConsultarArticulo();
 		String clave = panel.getComboArticulos().getSelectedItem().toString();
-		Articulo articulo = this.paraUI.getLogica().consularArticulo(clave);
+		Articulo articulo = this.paraUI.getLogica().obtenerArticulo(clave);
 		panel.getTxtDescripcion().setText(articulo.getDescripcion());
 		panel.getTxtPrecioActual().setText(String.valueOf(articulo.getCurrentPrice()));
 	}
